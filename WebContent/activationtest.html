@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>mytest</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+<!-- 	<link rel="stylesheet" href="css/vex.css" />
+	<link rel="stylesheet" href="css/vex-theme-os.css" />
+ -->	
+	<style type="text/css">
+	
+		#dialog-boarding-triggered {
+			display: none;
+		}
+		
+		#dialog-board-images {
+			display: none;
+		}
+		
+		#dialog-check-result {
+			display:none;
+		}
+		
+		#dialog-last-result {
+			display:none;
+		}
+		
+
+		.ui-dialog {
+			background:yellow !important
+		}
+		
+		.ui-button {
+			cusor: pointer;
+			color: #3682c4;
+		}		
+		
+		.ui-icon.green {
+	 		-ms-transform: scale(1.2); /* IE 9 */
+  			-webkit-transform: scale(1.2); /* Chrome, Safari, Opera */
+			transform: scale(1.2);
+	 		background-image: url(img/ui-icons_3c9646_256x240.png);
+	 	}
+
+	 	.ui-icon.red {
+	 		-ms-transform: scale(1.2); /* IE 9 */
+  			-webkit-transform: scale(1.2); /* Chrome, Safari, Opera */
+			transform: scale(1.2);
+	 		background-image: url(img/ui-icons_f61313_256x240.png);
+	 	}
+		
+		.ui-icon.default {
+	 		-ms-transform: scale(1.2); /* IE 9 */
+  			-webkit-transform: scale(1.2); /* Chrome, Safari, Opera */
+			transform: scale(1.2);
+	 		background-image: url(img/ui-icons_a1a1a1_256x240.png);
+	 	}
+		
+	</style>
+	
+	
+</head>
+<body>
+	<div >
+    	<h1>Staging</h1>
+		<p class="stag-message"></p>
+    	<fieldset id="stag-checkboxes"">
+			<label for="saml" style="padding-right: 6px;">SAML</label>
+    		<input type="checkbox" id="checkbox-stag-saml" />
+    		<br>
+			<label for="oidc" style="padding-right: 10px;">OIDC</label>
+    		<input type="checkbox" id="checkbox-stag-oidc" />
+    	</fieldset>
+      	<button class="ui-button ui-widget ui-corner-all" id="button-stag-refresh">Refresh</button>
+    	<button class="ui-button ui-widget ui-corner-all" id="button-stag-board">Board</button>
+		<div id="dialog-last-result" class="dialog">
+			<p id="p-dialog-last-result-stag"><span class="ui-icon ui-icon-info"></span></p>
+		</div>  
+    </div>
+	<div>
+    	<h1>Test</h1>
+		<p class="test-message"></p>
+    	<fieldset id="test-checkboxes">
+			<label for="saml" style="padding-right: 6px;">SAML</label>
+    		<input type="checkbox" id="checkbox-test-saml" />
+    		<br>
+			<label for="oidc" style="padding-right: 10px;">OIDC</label>
+    		<input type="checkbox" id="checkbox-test-oidc" />
+    	</fieldset>
+    	<button class="ui-button ui-widget ui-corner-all" id="button-test-refresh">Refresh</button>
+    	<button class="ui-button ui-widget ui-corner-all" id="button-test-board">Board</button>
+		<div id="dialog-last-result" class="dialog">
+			<p id="p-dialog-last-result-test"><span class="ui-icon ui-icon-info"></span></p>
+		</div>
+    </div>
+	<div>
+		<h1>Prod</h1>
+		<p class="prod-message"></p>
+    	<fieldset id="prod-checkboxes">
+			<label for="saml" style="padding-right: 6px;">SAML</label>
+    		<input type="checkbox" id="checkbox-prod-saml" />
+    		<br>
+			<label for="oidc" style="padding-right: 10px;">OIDC</label>
+    		<input type="checkbox" id="checkbox-prod-oidc" />
+    	</fieldset>
+    	<button class="ui-button ui-widget ui-corner-all" id="button-prod-refresh">Refresh</button>
+    	<button class="ui-button ui-widget ui-corner-all" id="button-prod-board">Board</button>
+		<div id="dialog-last-result" class="dialog">
+			<p id="p-dialog-last-result-prod"><span class="ui-icon ui-icon-info"></span></p>
+		</div>
+    </div>
+    <div id="dialog-boarding-triggered" class="ui-dialog-titlebar ui-widget-header">
+		<p><spanclass="ui-icon ui-icon-circle-check"></span>
+		w3id partner jobs are boarding. You will receive an email if there are any boarding errors.</p>
+	</div>
+			<div id="dialog-check-result" class="dialog">
+				<p id="p-dialog-result-line1"><span class="ui-icon ui-icon-info"></span></p>
+				<p id="p-dialog-result-line2"></p>
+			</div>
+			<div id="dialog-board-images" class="dialog" title="w3id partner jobs">
+				SAML: <span id="dialog-board-saml" class="ui-icon ui-icon-closethick red"></span>
+				OIDC: <span id="dialog-board-oidc" class="ui-icon ui-icon-closethick red"></span>
+			</div>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jso.js"></script>
+<!--     <script src="js/vex.combined.js"></script> -->
+<!-- 	<script>vex.defaultOptions.className = 'vex-theme-os'</script> -->
+    <script src="js/activationtest.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>activationlogstest</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+<script src="//1.www.s81c.com/common/stats/ida_stats.js"></script>
+    <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+    <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+		<script type="text/javascript">
+		 IBMCore.common.util.config.set({
+		  "masthead":{
+		    "type":"alternate"
+		  },
+		  "footer":{
+		    "type":"alternate",
+		    "socialLinks":{
+		      "enabled":false
+		    }
+		  }
+		});   
+	 </script>
+	
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jstree/themes/default/style.css" />
+	<link rel="stylesheet" href="css/pickmeup.css">
+
+	 <style type="text/css">
+	 
+	 	#accordion-devicefp-lookup {
+			width: 80%;
+			padding: 10px 5px;
+			line-height: 30px;
+		}
+
+		.dialog-browse {
+			display: none;
+		}
+		
+		.dialog-download {
+			display: none;
+		}
+		
+		.dialog-search {
+			display: none;
+		}
+		
+		.dialog {
+			display: none;
+		}
+		
+		#dialog-help-download-timeframe {
+			display: none;
+		}
+		
+		
+		.ui-button {
+	 		cursor: pointer;
+			color: #3682c4;
+	 	}
+	 	
+	 	.jstree-div {
+	 		font-size: xx-small;
+	 		font-style: normal;
+	 	}
+	 	
+	 	.lbl {
+	 		font-family: verdana;
+	 		font-size: small;
+	 		font-style: oblique
+	 	}
+	 </style>
+</head>
+<body>
+        <main role="main" aria-labelledby="ibm-pagetitle-h1">
+          <div id="ibm-pcon">
+            <div id="ibm-content">
+              <div id="ibm-content-body">
+              
+                <div id="ibm-content-main">
+                	<div class="ibm-columns">
+                		<div class="ibm-col-4-1" style="width: 100%">
+
+                                                    			<div id="accordion-admin">
+				<h3>Production</h3>
+                                                    			<div id="accordion-admin-prod">
+				<div class="admin">
+					<div class="ibm-col-3-1" id="admin-devicefp-lookup-prod" style="width: 40%;">
+						<h2 style="font-weight: bold;">Lookup Device Fingerprints</h2>
+						<div class="ibm-col-3-1" style="width: 45%">
+							<label class="lbl" for="devicefp-lookup-textarea-prod">Input user ID(s) to search (separate by comma, space or on new line for more than one)</label>
+							<textarea id="devicefp-lookup-textarea-prod" rows="5" cols="25"></textarea>
+						</div>
+						<div class="ibm-col-3-1" style="width: 10%">&nbsp;</div>
+						<div class="ibm-col-3-1" style="width: 45%">
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<fieldset>
+								<button id="devicefp-lookup-search-prod" class="btn">Search</button>
+								<button id="devicefp-lookup-reset-prod" class="btn">Reset</button>
+							</fieldset>
+							<div>&nbsp;</div>
+							<fieldset>
+								<input type="checkbox" id="btn-devicefp-lookup-search-email-prod">
+								<label for="btn-devicefp-lookup-search-email-prod">Email me results (Don't wait)</label>
+							</fieldset>
+						</div>
+					</div> <!--<div class="ibm-col-3-1" id="admin-devicefp-lookup-prod" style="width: 40%;">  -->
+					<div class="ibm-col-3-1" style="width: 10%">&nbsp;</div>
+					<div class="ibm-col-3-1" id="admin-tfim-custom-ldapmapper-prod" style="width: 40%">
+						<label>Manage Custom LDAP Mapper in TFIM</label>
+						<div>&nbsp;</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-file-upload-prod">
+							<label for="btn-tfim-custom-ldapmapper-file-upload-prod">Upload from local</label>
+						</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-server-filepath-prod">
+							<label for="brn-tfim-custom-ldapmapper-server-filepath-prod">Full path to file on server</label>
+						</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-version-revert-prod">
+							<label for="btn-tfim-custom-ldapmapper-version-revert-prod">Revert to previous version</label>
+						</div>
+								<div>&nbsp;</div>
+						<div>
+							<input type="file" id="file-tfim-custom-ldapmapper-file-upload-prod"/>
+							<label id="lbl-tfim-custom-ldapmapper-server-filepath-prod" for="txt-tfim-custom-ldapmapper-server-filepath-prod">Enter full path to custom LDAP Mapper file</label>
+							<input type="text" id="txt-tfim-custom-ldapmapper-server-filepath-prod" />
+							<label id="lbl-tfim-custom-ldapmapper-version-revert-prod" for="select-tfim-custom-ldapmapper-version-revert-prod">Select previous version to revert</label>
+							<select id="select-tfim-custom-ldapmapper-version-revert-prod" style="width: 150px" ></select>
+						</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+					</div> <!--<div class="ibm-col-3-1" id="admin-tfim-custom-ldapmapper-prod" style="width: 40%">  -->
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+				</div> <!-- <div id="accordion-admin-prod"> -->
+				</div> <!-- <div class="admin"> -->
+				<h3>Staging</h3>
+                                                    			<div id="accordion-admin-stag">
+				<div class="admin">
+					<div class="ibm-col-3-1" id="admin-devicefp-lookup-stag" style="width: 40%;">
+						<h2 style="font-weight: bold;">Lookup Device Fingerprints</h2>
+						<div class="ibm-col-3-1" style="width: 45%">
+							<label class="lbl" for="devicefp-lookup-textarea-stag">Input user ID(s) to search (separate by comma, space or on new line for more than one)</label>
+							<textarea id="devicefp-lookup-textarea-stag" rows="5" cols="25"></textarea>
+						</div>
+						<div class="ibm-col-3-1" style="width: 10%">&nbsp;</div>
+						<div class="ibm-col-3-1" style="width: 45%">
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<fieldset>
+								<button id="devicefp-lookup-search-stag" class="btn">Search</button>
+								<button id="devicefp-lookup-reset-stag" class="btn">Reset</button>
+							</fieldset>
+							<div>&nbsp;</div>
+							<fieldset>
+								<input type="checkbox" id="btn-devicefp-lookup-search-email-stag">
+								<label for="btn-devicefp-lookup-search-email-stag">Email me results (Don't wait)</label>
+							</fieldset>
+						</div>
+					</div> <!--<div class="ibm-col-3-1" id="admin-devicefp-lookup-stag" style="width: 40%;">  -->
+					<div class="ibm-col-3-1" style="width: 10%">&nbsp;</div>
+					<div class="ibm-col-3-1" id="admin-tfim-custom-ldapmapper-stag" style="width: 40%">
+						<label>Manage Custom LDAP Mapper in TFIM</label>
+						<div>&nbsp;</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-file-upload-stag">
+							<label for="btn-tfim-custom-ldapmapper-file-upload-stag">Upload from local</label>
+						</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-server-filepath-stag">
+							<label for="brn-tfim-custom-ldapmapper-server-filepath-stag">Full path to file on server</label>
+						</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-version-revert-stag">
+							<label for="btn-tfim-custom-ldapmapper-version-revert-stag">Revert to previous version</label>
+						</div>
+								<div>&nbsp;</div>
+						<div>
+							<input type="file" id="file-tfim-custom-ldapmapper-file-upload-stag"/>
+							<label id="lbl-tfim-custom-ldapmapper-server-filepath-stag" for="txt-tfim-custom-ldapmapper-server-filepath-stag">Enter full path to custom LDAP Mapper file</label>
+							<input type="text" id="txt-tfim-custom-ldapmapper-server-filepath-stag" />
+							<label id="lbl-tfim-custom-ldapmapper-version-revert-stag" for="select-tfim-custom-ldapmapper-version-revert-stag">Select previous version to revert</label>
+							<select id="select-tfim-custom-ldapmapper-version-revert-stag" style="width: 150px" ></select>
+						</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+					</div> <!--<div class="ibm-col-3-1" id="admin-tfim-custom-ldapmapper-stag" style="width: 40%">  -->
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+				</div> <!-- <div class="admin"> -->
+				</div> <!-- <div id="accordion-admin-stag"> -->
+				<h3>Test</h3>
+                                                    			<div id="accordion-admin-test">
+				<div class="admin">
+									<div class="ibm-col-3-1" id="admin-devicefp-lookup-test" style="width: 40%;">
+						<h2 style="font-weight: bold;">Lookup Device Fingerprints</h2>
+						<div class="ibm-col-3-1" style="width: 45%">
+							<label class="lbl" for="devicefp-lookup-textarea-test">Input user ID(s) to search (separate by comma, space or on new line for more than one)</label>
+							<textarea id="devicefp-lookup-textarea-test" rows="5" cols="25"></textarea>
+						</div>
+						<div class="ibm-col-3-1" style="width: 10%">&nbsp;</div>
+						<div class="ibm-col-3-1" style="width: 45%">
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<fieldset>
+								<button id="devicefp-lookup-search-test" class="btn">Search</button>
+								<button id="devicefp-lookup-reset-test" class="btn">Reset</button>
+							</fieldset>
+							<div>&nbsp;</div>
+							<fieldset>
+								<input type="checkbox" id="btn-devicefp-lookup-search-email-test">
+								<label for="btn-devicefp-lookup-search-email-test">Email me results (Don't wait)</label>
+							</fieldset>
+						</div>
+					</div> <!--<div class="ibm-col-3-1" id="admin-devicefp-lookup-test" style="width: 40%;">  -->
+					<div class="ibm-col-3-1" style="width: 10%">&nbsp;</div>
+					<div class="ibm-col-3-1" id="admin-tfim-custom-ldapmapper-test" style="width: 40%">
+						<label>Manage Custom LDAP Mapper in TFIM</label>
+						<div>&nbsp;</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-file-upload-test">
+							<label for="btn-tfim-custom-ldapmapper-file-upload-test">Upload from local</label>
+						</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-server-filepath-test">
+							<label for="brn-tfim-custom-ldapmapper-server-filepath-test">Full path to file on server</label>
+						</div>
+						<div>
+							<input type="radio" id="btn-tfim-custom-ldapmapper-version-revert-test">
+							<label for="btn-tfim-custom-ldapmapper-version-revert-test">Revert to previous version</label>
+						</div>
+								<div>&nbsp;</div>
+						<div>
+							<input type="file" id="file-tfim-custom-ldapmapper-file-upload-test"/>
+							<label id="lbl-tfim-custom-ldapmapper-server-filepath-test" for="txt-tfim-custom-ldapmapper-server-filepath-test">Enter full path to custom LDAP Mapper file</label>
+							<input type="text" id="txt-tfim-custom-ldapmapper-server-filepath-test" />
+							<label id="lbl-tfim-custom-ldapmapper-version-revert-test" for="select-tfim-custom-ldapmapper-version-revert-test">Select previous version to revert</label>
+							<select id="select-tfim-custom-ldapmapper-version-revert-test" style="width: 150px" ></select>
+						</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+					</div> <!--<div class="ibm-col-3-1" id="admin-tfim-custom-ldapmapper-test" style="width: 40%">  -->
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+				</div> <!-- <div class="admin"> -->
+				</div> <!--  <div id="accordion-admin-stag"> -->				
+				</div> <!-- end <div id="accordion"> -->
+			</div> <!-- <div class="ibm-col-4-1" style="width: 100%"> -->
+			<div id="dialog-invalid-selection" class="dialog">
+				<p><span class="ui-icon ui-icon-alert"></span>
+				Invalid selection made. Please select at least one log file from one host</p>
+			</div>
+			<div id="dialog-please-wait" class="dialog">
+				<p><span class="ui-icon ui-icon-info"></span>
+				Please wait...</p>
+				<p>You may close this alert - you will be notified with the download key shortly.</p>
+			</div>
+			<div id="dialog-devicefp-lookup-result" class="dialog" title="Device Fingerprint Lookup Result">
+				<p id="p-dialog-devicefp-lookup-result-line1"><span class="ui-icon ui-icon-info"></span></p>
+				<div align="right">
+				<button class="button" id="btn-dialog-devicefp-lookup-copy" data-clipboard-target="#p-dialog-devicefp-lookup-result-line1">Copy <span class="ui-icon ui-icon-copy"></span></button>
+				</div>
+			</div>
+			<div id="dialog-result" class="dialog">
+				<p id="p-dialog-result-line1"><span class="ui-icon ui-icon-info"></span></p>
+				<p id="p-dialog-result-line2"></p>
+			</div>
+			<div id="dialog-help-download-timeframe" class="dialog">
+				<p><span class="ui-icon ui-icon-info"></span>
+				You can input a date range using the format "YYYYMMDD-YYYYMMDD"</p>
+				<p>For example, 20161228-20170103</p>
+			</div>
+
+			<div id="dialog-help-search-timeframe" class="dialog">
+				<p><span class="ui-icon ui-icon-info"></span>
+				You can input a date range using the format "YYYYMMDD-YYYYMMDD"</p>
+				<p>For example, 20161228-20170103</p>
+				<p><span class="ui-icon ui-icon-info"></span>
+				By default today's date is used</p>
+			</div>
+
+	</div> <!-- <div class="ibm-columns"> -->
+              
+                </div> <!--  <div id="ibm-content-main"> --> 
+			</div> <!-- <div id="ibm-content-body"> --> 
+            </div> <!-- <div id="ibm-pcon"> -->   
+          </div> <!-- <div id="ibm-content"> -->  
+          
+          
+              
+                       
+          
+            
+               
+                	
+                		
+
+                                                    			
+          
+        </main> <!--  <main role="main" aria-labelledby="ibm-pagetitle-h1"> -->
+              
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jstree/jstree.js"></script>
+	<script src="js/jstree/jstree.checkbox.js"></script>
+	<script src="js/jstree/jstree.wholerow.js"></script>	
+	<script src="js/pickmeup.min.js"></script>
+	<script src="js/clipboard.js"></script>
+	<script src="js/admintest.js"></script>
+</body>
+</html>

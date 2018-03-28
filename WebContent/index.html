@@ -1,0 +1,108 @@
+<meta http-equiv="refresh" content="0; url=home_1.html" />
+<!-- 
+/**
+ * HTML for Web front-end of the w3id F/SSO Management Utility.
+ * @author rkhanna@us.ibm.com
+ * 
+ * Change history:
+ * --------------------------------------------------------------------------------------------------
+ * | VERSION	| DATE			|	CHANGE DESCRIPTION												|
+ * --------------------------------------------------------------------------------------------------
+ * | 0.1		| 12/08/2016	|	Initial version with Staging and Dev jobs detection and boarding|
+ * --------------------------------------------------------------------------------------------------
+ * | 0.2		| 12/09/2016	|	Supporting simulated production jobs detection and boarding		|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.0		| 12/16/2016	|	Supporting production jobs detection and boarding; baselined	|
+ * |			|				|	release.														|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.0.1		| 12/21/2016	|	Using .prop method on HTML elements instead of .attr			|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.0.2		| 12/23/2016	|	Added manual override function for non-production environments.	|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.0.3		| 12/27/2016	|	Added instructions to Activation functions.						|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.0.4		| 01/06/2017	|	Updated icon coloring to be more attention grabbing.			|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.1.0		| 01/25/2017	|	Limited WebSEAL Logs download functions added.					|	
+ * --------------------------------------------------------------------------------------------------
+ * | 1.1.1		| 02/07/2017	|	Corrected breadcrumb on logs_home_2_1.html page; fixed error in |	
+ * |			|				|	log files fetch initiation logic; added alert box in partner 	|
+ * |			|				|	activation page. 												|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.2.0		| 02/15/2017	|	Enabled time-frame selection to download log files from Logs 	|
+ * |			|				|	Home page; added date selector jQuery component.				| 												|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.2.1		| 02/15/2017	|	Fixed an issue that disabled boarding prod and test jobs. 		|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.2.2		| 02/16/2017	|	Made pending jobs checking an async Ajax call. 					|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.2.3		| 02/16/2017	|	Fixed a minor timing issue between alert notice and UI 			|
+ * |			|				|	component refresh, re: pending jobs check.						| 												|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.2.4		| 02/17/2017	|	Added functions to support notification of retrieve log files	|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.2.5		| 03/03/2017	|	Added logic to ensure valid date range is selected				|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.2.6		| 03/07/2017	|	Beautified the pending jobs results alert to use images			|
+ * --------------------------------------------------------------------------------------------------
+ * | 1.2.7		| 03/20/2017	|	Added search functions to logs home								|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.0.0		| 03/21/2017	|	Updated HTML pages with noticeable changes, such as:			|
+ * |			|				|	- Home page 													|
+ * |			|				|	- Monitor tab 													|
+ * |			|				|	- Admin tab 													|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.0.1		| 04/14/2017	|	Fixed an issue (in JavaScript) in which logs selected for any 	|
+ * |			|				|	particular server(s), but less than all of them, in any 		|
+ * |			|				|	environment was ignored and all servers were automatically  	|
+ * |			|				|	included in the request											|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.0.2		| 04/17/2017	|	Fixed prod ISAM instance URLs to point to admin interfaces for  |
+ * |			|				|	logs fetch														|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.0.3		| 04/18/2017	|	Updated getLogs and searchLogs functions in logs-home.js to 	|
+ * |			|				|	better report on results of requested log files (ref: v1.4.3 of	|
+ * |			|				|	REST services)													|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.0		| 04/19/2017	|	Added device fingerprint lookup functions to front-end 		 	|
+ * |			|				|	(IMW-1572); the framework for custom LDAP Mapper management has	|
+ * |			|				|	been added, but functions are disabled							|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.1		| 04/20/2017	|	Removed "All" redio button fron logs download modal alert; 	 	|
+ * |			|				|	fixed custom LDAP mapper management components initialized in 	|
+ * |			|				|	Test environment 												|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.2		| 05/01/2017	|	Refactored logs_home.js to use the ambiguous hosts with ordinal |
+ * |			|				|	(e.g., host1, host2, ... , host X, where is X is the final 		|
+ * |			|				|	instance number in the list / array) 							|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.3		| 05/02/2017	|	Added previous boarding status reporting to activation page		|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.4		| 05/02/2017	|	Address issue with receiving HTML instead of text for previous 	|
+ * |			|				|	boarding status; added keepalive.js to enabled HTML files		|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.5		| 05/05/2017	|	Fixed an issue that prevented manual boarding in lower 			|
+ * |			|				|	environments due to the frequent check for previous boarding 	|
+ * |			|				|	status; fixed Admin controls layout (IMW-1708)					|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.6		| 05/08/2017	|	Enhanced and enabled previous boarding status checks in other  	|
+ * |			|				|	environments (ref IMW-1798); fixed issue with receiving HTML	|
+ * |			|				|	instead of text													|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.7		| 05/11/2017	|	Fixed minor issue preventing device fingerprint lookups in dev 	|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.8		| 05/16/2017	|	Removed ISAM MGA Messages log fetch in w3id Test environment 	|
+ * |			|				|	due to changes in ISAM 9 REST API (ref. PMR 63179,442,000) 		|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.9		| 05/18/2017	|	Added ability to set to either old ISAM 8 or new ISAM 9 		|	
+ * |			|				|	WebSEAL junction, or localhost, depending on host in URL;  		|
+ * |			|				|	removed ISAM MGA Messages log fetch in w3id Staging environment |
+ * |			|				|	due to changes in ISAM 9 REST API (ref. PMR 63179,442,000) 		|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.1.10		| 05/25/2017	|	Removed ISAM MGA Messages log fetch in all w3id environments 	|
+ * |			|				|	due to changes in ISAM 9 REST API (ref. PMR 63179,442,000) 		|
+ * --------------------------------------------------------------------------------------------------
+ * | 2.2.0		| 06/29/2017	|	Added F5 Cookie decoding function 								|
+ * --------------------------------------------------------------------------------------------------
+ * 
+ */ -->

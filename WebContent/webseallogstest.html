@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>activationlogstest</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+<script src="//1.www.s81c.com/common/stats/ida_stats.js"></script>
+    <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+    <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+		<script type="text/javascript">
+		 IBMCore.common.util.config.set({
+		  "masthead":{
+		    "type":"alternate"
+		  },
+		  "footer":{
+		    "type":"alternate",
+		    "socialLinks":{
+		      "enabled":false
+		    }
+		  }
+		});   
+	 </script>
+	
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jstree/themes/default/style.css" />
+	<link rel="stylesheet" href="css/pickmeup.css">
+
+	 <style type="text/css">
+	 
+	 	#accordion-logs-listing-webseal {
+			width: 80%;
+			padding: 10px 5px;
+			line-height: 30px;
+		}
+
+		.dialog-browse {
+			display: none;
+		}
+		
+		.dialog-download {
+			display: none;
+		}
+		
+		.dialog-search {
+			display: none;
+		}
+		
+		.dialog {
+			display: none;
+		}
+		
+		#dialog-help-download-timeframe {
+			display: none;
+		}
+		
+		
+		.ui-button {
+	 		cursor: pointer;
+			color: #3682c4;
+	 	}
+	 	
+	 	.jstree-div {
+	 		font-size: xx-small;
+	 		font-style: normal;
+	 	}
+	 </style>
+</head>
+<body>
+        <main role="main" aria-labelledby="ibm-pagetitle-h1">
+          <div id="ibm-pcon">
+            <div id="ibm-content">
+              <div id="ibm-content-body">
+              
+                <div id="ibm-content-main">
+                	<div class="ibm-columns">
+                		<div class="ibm-col-4-1" style="width: 100%">
+
+                                                    			<div id="accordion-logs-webseal">
+				<h3>Production</h3>
+				<div class="accordion-logs-listing-webseal" id="prod">
+					<div class="buttons" align="center">
+						<fieldset>
+							<button id="btn-selectall-prod" class="btn-select-all">Select All</button>
+							<button id="btn-search-prod" class="btn-search">Search</button>
+							<button id="btn-download-prod" class="btn-download">Download</button>
+						</fieldset>
+						<div id="dialog-download-prod" class="dialog-download" align="left">
+							<fieldset>
+								<legend><span class="ui-icon ui-icon-notice"></span>Select which filter you want to apply to downloading logs:</legend><br />
+								<div align="center">
+									<input type="radio" id="radio-dialog-download-latest-prod" name="radio-dialog-download-latest-prod" class="radio-dialog" /> 
+									<label for="radio-dialog-download-latest-prod"> Latest</label>
+									<input type="radio" id="radio-dialog-download-all-prod" name="radio-dialog-download-all-prod" class="radio-dialog" disabled="disabled" />
+									<label for="radio-dialog-download-latest-prod"> All</label>
+									<input type="radio" id="radio-dialog-download-timeframe-prod" name="radio-dialog-download-timeframe-prod" class="radio-dialog" />
+									<label for="radio-dialog-download-timeframe-prod"> Time-frame</label><br /><br />
+									<input type="radio" id="radio-dialog-retrieve-download-prod" /> 
+									<label>I have a key</label>
+								</div>
+							</fieldset>								
+							<fieldset>
+								<label id="lbl-dialog-download-prod" for="text-dialog-retrieve-download-prod">Download Key</label>
+								<input type="text" id="text-dialog-retrieve-download-prod" style="width: 90%;" disabled="disabled" />
+								<div id='dialog-download-timeframe-prod' class="dialog-download-timeframe">
+									<label id="lbl-dialog-download-timeframe-prod" for="text-dialog-download-timeframe-prod">Date Range&nbsp;<span class="ui-icon ui-icon-info" id="span-help-download-timeframe-prod"></span></label><br />
+									<input type="text" id="text-dialog-download-timeframe-prod" style="width: 90%;" font: lighter;" value="Select dates below or input as YYYYMMDD-YYYYMMDD" /> 
+									<div class="download-timeframe" id='download-timeframe-prod'></div>
+								</div> 
+							</fieldset>
+						</div>
+						<div id="dialog-search-prod" class="dialog-search" align="left">
+ 							<fieldset>
+ 								<legend><span class="ui-icon ui-icon-notice"></span>Fill in the search details here</legend><br />
+								<div align="center">
+									<label>Time-frame</label>
+									<input type="checkbox" id="radio-dialog-search-timeframe-prod" /> 
+									<input type="checkbox" id="radio-dialog-retrieve-search-prod" /> 
+									<label>I have a key</label>
+								</div>
+ 							</fieldset>	
+ 							<br />							
+							<fieldset>
+								<label id="lbl-dialog-search-string-prod" for="txt-dialog-search-string-prod" style="elevation: lower;">Search String</label>
+								<input type="text" id="txt-dialog-search-string-prod" style="width: 300px;" value="Type your search string here"  /> 
+								<div id='dialog-retrieve-search-logs-prod' class="dialog-retrieve-search-logs" align="center">
+									<label id="lbl-dialog-retrieve-search-logs-prod" for="txt-dialog-retrieve-search-prod">Download Key</label>
+									<input type="text" id="txt-dialog-retrieve-search-prod" style="width: 200px;" disabled="disabled" />
+								</div>
+								<div id='dialog-search-timeframe-prod' class="dialog-search-timeframe">
+									<label id="lbl-dialog-search-timeframe-prod" for="txt-dialog-search-timeframe-prod">Date Range&nbsp;<span class="ui-icon ui-icon-info" id="span-help-search-timeframe-prod"></span></label><br />
+									<input type="text" id="txt-dialog-search-timeframe-prod" style="width: 200px;" font: lighter;" value="Select dates below or input as YYYYMMDD-YYYYMMDD" /> 
+									<div class="search-timeframe" id='search-timeframe-prod'></div>
+								</div> 
+							</fieldset>
+						</div>
+					</div>				
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+                		<div class="ibm-col-4-1" style="width: 25%">
+	                		<h4>Server 1</h4>
+							 <div id="jstree-div-prod-host-1" class="jstree-div"></div>	 
+							<div>&nbsp;</div>						
+<!--							<div align="center">
+								<button id="btn-browse-prod-host-1" class="btn-browse" disabled="disabled">Browse...</button>
+							</div>
+ 							<div id="dialog-browse-prod-host-1" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div>
+							<div class="modal-browse-prod-host-1">
+								<div class="modal-header">
+									<h3>Select files <a class="close-modal" href="#">&times;</a></h3>
+								</div>
+								<div class="modal-body-browse-prod-host-1">
+									<ul id="modal-body-browse-prod-host-1-logs-selectable" style="height: 100px; overflow: scroll;">
+									  <li class="ui-widget-content">Item 1</li>
+									  <li class="ui-widget-content">Item 2</li>
+									  <li class="ui-widget-content">Item 3</li>
+									  <li class="ui-widget-content">Item 4</li>
+									  <li class="ui-widget-content">Item 5</li>
+									  <li class="ui-widget-content">Item 6</li>
+									</ul>
+								</div>
+								<div class="modal-footer">
+									<button class="modalOK close-modal">OK</button>
+								</div>
+							</div>
+							<div class="modal-backdrop"></div> -->
+						</div>
+                		<div class="ibm-col-4-1" style="width: 25%">
+	                		<h4>Server 2</h4>
+							 <div id="jstree-div-prod-host-2" class="jstree-div"></div>	 
+							<div>&nbsp;</div>						
+							<!-- <div align="center">
+								<button id="btn-browse-prod-host-2" class="btn-browse" disabled="disabled">Browse...</button>
+							</div> -->
+							<!-- <div id="dialog-browse-prod-host-2" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div> -->
+						</div>
+                		<div class="ibm-col-4-1" style="width: 25%">
+	                		<h4>Server 3</h4>
+							 <div id="jstree-div-prod-host-3" class="jstree-div"></div>	 	                		
+							<div>&nbsp;</div>						
+							<!-- <div align="center">
+								<button id="btn-browse-prod-host-3" class="btn-browse" disabled="disabled">Browse...</button>
+							</div> -->
+							<!-- <div id="dialog-browse-prod-host-3" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div> -->
+						</div>
+                		<div class="ibm-col-4-1" style="width: 25%">
+	                		<h4>Server 4</h4>
+							 <div id="jstree-div-prod-host-4" class="jstree-div"></div>	 
+							<div>&nbsp;</div>						
+							<!-- <div align="center">
+								<button id="btn-browse-prod-host-4" class="btn-browse" disabled="disabled">Browse...</button>
+							</div> -->
+<!-- 							<div id="dialog-browse-prod-host-4" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div> -->
+						</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>						
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+				</div>
+				<h3>Staging</h3>
+				<div class="accordion-logs-listing-webseal" id="stag">
+					<div align="center">
+						<fieldset>
+							<button id="btn-selectall-stag" class="btn-select-all">Select All</button>
+							<button id="btn-search-stag" class="btn-search">Search</button>
+							<button id="btn-download-stag" class="btn-download">Download</button>
+						</fieldset>
+						<div id="dialog-download-stag" class="dialog-download" align="left">
+							<fieldset>
+								<legend><span class="ui-icon ui-icon-notice"></span>Select which filter you want to apply to downloading logs:</legend><br />
+								<div align="center">
+									<input type="radio" id="radio-dialog-download-latest-stag" name="radio-dialog-download-latest-stag" class="radio-dialog" /> 
+									<label for="radio-dialog-download-latest-stag"> Latest</label>
+									<input type="radio" id="radio-dialog-download-all-stag" name="radio-dialog-download-all-stag" class="radio-dialog" disabled="disabled" />
+									<label for="radio-dialog-download-latest-stag"> All</label>
+									<input type="radio" id="radio-dialog-download-timeframe-stag" name="radio-dialog-download-timeframe-stag" class="radio-dialog" />
+									<label for="radio-dialog-download-timeframe-stag"> Time-frame</label><br /><br />
+									<input type="radio" id="radio-dialog-retrieve-download-stag" /> 
+									<label>I have a key</label>
+								</div>
+							</fieldset>	
+							<fieldset>
+								<label id="lbl-dialog-download-stag" for="text-dialog-retrieve-download-stag">Download Key</label>
+								<input type="text" id="text-dialog-retrieve-download-stag" style="width: 500px;" disabled="disabled"/> 
+								<div id='dialog-download-timeframe-stag' class="dialog-download-timeframe">
+									<label id="lbl-dialog-download-timeframe-stag" for="text-dialog-download-timeframe-stag">Date Range&nbsp;<span class="ui-icon ui-icon-info" id="span-help-download-timeframe-stag"></span></label><br />
+									<input type="text" id="text-dialog-download-timeframe-stag" style="width: 90%;" font: lighter;" value="Select dates below or input as YYYYMMDD-YYYYMMDD" /> 
+									<div class="download-timeframe" id='download-timeframe-stag'></div>
+								</div> 
+							</fieldset>								
+						</div>
+						<div id="dialog-search-stag" class="dialog-search" align="left">
+ 							<fieldset>
+ 								<legend><span class="ui-icon ui-icon-notice"></span>Fill in the search details here</legend><br />
+								<div align="center">
+									<label>Time-frame</label>
+									<input type="checkbox" id="radio-dialog-search-timeframe-stag" /> 
+									<input type="checkbox" id="radio-dialog-retrieve-search-stag" /> 
+									<label>I have a key</label>
+								</div>
+ 							</fieldset>	
+ 							<br />							
+							<fieldset>
+								<label id="lbl-dialog-search-string-stag" for="txt-dialog-search-string-stag">Search String</label>
+								<input type="text" id="txt-dialog-search-string-stag" style="width: 700px;" value="Type your search string here"  /> 
+								<div id='dialog-retrieve-search-logs-stag' class="dialog-retrieve-search-logs" align="center">
+									<label id="lbl-dialog-retrieve-search-logs-stag" for="txt-dialog-retrieve-search-stag">Download Key</label>
+									<input type="text" id="txt-dialog-retrieve-search-stag" style="width: 200px;" disabled="disabled" />
+								</div>
+								<div id='dialog-search-timeframe-stag' class="dialog-search-timeframe">
+									<label id="lbl-dialog-search-timeframe-stag" for="txt-dialog-search-timeframe-stag">Date Range&nbsp;<span class="ui-icon ui-icon-info" id="span-help-search-timeframe-stag"></span></label><br />
+									<input type="text" id="txt-dialog-search-timeframe-stag" style="width: 200px%;" font: lighter;" value="Select dates below or input as YYYYMMDD-YYYYMMDD" /> 
+									<div class="search-timeframe" id='search-timeframe-stag'></div>
+								</div> 
+							</fieldset>
+						</div>
+					</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+                		<div class="ibm-col-4-1" style="width: 33%" id="stag-server1">
+                			<h4>Server 1</h4>
+							 <div id="jstree-div-stag-host-1" class="jstree-div"></div>	 
+							<div>&nbsp;</div>						
+							<!-- <div align="center">
+								<button id="btn-browse-stag-host-1" class="btn-browse" disabled="disabled">Browse...</button>
+							</div>
+							<div id="dialog-browse-stag-host-1" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div> -->
+						</div>
+                		<div class="ibm-col-4-1" style="width: 33%" id="stag-server2">
+	                		<h4>Server 2</h4>
+							<div id="jstree-div-stag-host-2" class="jstree-div"></div>	 
+							<div>&nbsp;</div>						
+							<!-- <div align="center">
+								<button id="btn-browse-stag-host-2" class="btn-browse" disabled="disabled">Browse...</button>
+							</div>
+							<div id="dialog-browse-stag-host-2" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div> -->
+						</div>
+                		<div class="ibm-col-4-1" style="width: 33%" id="stag-server3">
+	                		<h4>Server 3</h4>
+							<div id="jstree-div-stag-host-3" class="jstree-div"></div>	 
+							<div>&nbsp;</div>						
+							<!-- <div align="center">
+								<button id="btn-browse-stag-host-3" class="btn-browse" disabled="disabled">Browse...</button>
+							</div>
+							<div id="dialog-browse-stag-host-3" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div> -->
+						</div>
+				</div>
+				<h3>Test</h3>
+				<div class="accordion-logs-listing-webseal" id="test">
+					<div align="center">
+						<fieldset>
+							<button id="btn-selectall-test" class="btn-select-all">Select All</button>
+							<button id="btn-search-test" class="btn-search">Search</button>
+							<button id="btn-download-test" class="btn-download">Download</button>
+						</fieldset>
+						<div id="dialog-download-test" class="dialog-download" align="left">
+							<fieldset>
+								<legend><span class="ui-icon ui-icon-notice"></span>Select which filter you want to apply to downloading logs:</legend><br />
+								<div align="center">
+									<input type="radio" id="radio-dialog-download-latest-test" name="radio-dialog-download-latest-test" class="radio-dialog" /> 
+									<label for="radio-dialog-download-latest-test"> Latest</label>
+									<input type="radio" id="radio-dialog-download-all-test" name="radio-dialog-download-all-test" class="radio-dialog" disabled="disabled" />
+									<label for="radio-dialog-download-latest-test"> All</label>
+									<input type="radio" id="radio-dialog-download-timeframe-test" name="radio-dialog-download-timeframe-test" class="radio-dialog" />
+									<label for="radio-dialog-download-timeframe-test"> Time-frame</label><br /><br />
+									<input type="radio" id="radio-dialog-retrieve-download-test" /> 
+									<label>I have a key</label>
+								</div>
+							</fieldset>								
+							<fieldset>
+								<label id="lbl-dialog-download-test" for="text-dialog-retrieve-download-test">Download Key</label>
+								<input type="text" id="text-dialog-retrieve-download-test" style="width: 500px;" disabled="disabled"/> 
+								<div id='dialog-download-timeframe-test' class="dialog-download-timeframe">
+									<label id="lbl-dialog-download-timeframe-test" for="text-dialog-download-timeframe-test">Date Range&nbsp;<span class="ui-icon ui-icon-info" id="span-help-download-timeframe-test"></span></label><br />
+									<input type="text" id="text-dialog-download-timeframe-test" style="width: 90%;" font: lighter;" value="Select dates below or input as YYYYMMDD-YYYYMMDD" /> 
+									<div class="download-timeframe" id='download-timeframe-test'></div>
+								</div> 
+							</fieldset>								
+						</div>
+						<div id="dialog-search-test" class="dialog-search" align="left">
+ 							<fieldset>
+ 								<legend><span class="ui-icon ui-icon-notice"></span>Fill in the search details here</legend><br />
+								<div align="center">
+									<label>Time-frame</label>
+									<input type="checkbox" id="radio-dialog-search-timeframe-test" /> 
+									<input type="checkbox" id="radio-dialog-retrieve-search-test" /> 
+									<label>I have a key</label>
+								</div>
+ 							</fieldset>	
+ 							<br />							
+							<fieldset>
+								<label id="lbl-dialog-search-string-test" for="txt-dialog-search-string-test">Search String</label>
+								<input type="text" id="txt-dialog-search-string-test" style="width: 700px;" value="Type your search string here" /> 
+								<div id='dialog-retrieve-search-logs-test' class="dialog-retrieve-search-logs" align="center">
+									<label id="lbl-dialog-retrieve-search-logs-test" for="txt-dialog-retrieve-search-test">Download Key</label>
+									<input type="text" id="txt-dialog-retrieve-search-test" style="width: 200px;" disabled="disabled" />
+								</div>
+								<div id='dialog-search-timeframe-test' class="dialog-search-timeframe" align="left">
+									<label id="lbl-dialog-search-timeframe-test" for="txt-dialog-search-timeframe-test">Date Range&nbsp;<span class="ui-icon ui-icon-info" id="span-help-search-timeframe-test"></span></label><br />
+									<input type="text" id="txt-dialog-search-timeframe-test" style="width: 200px;" font: lighter;" value="Select dates below or input as YYYYMMDD-YYYYMMDD" /> 
+									<div class="search-timeframe" id='search-timeframe-test'></div>
+								</div> 
+							</fieldset>
+						</div>
+					</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div class="ibm-col-4-1" style="width: 33%" id="test-server1">
+                		<h4>Server 1</h4>
+						<div id="jstree-div-test-host-1" class="jstree-div"></div>	 
+						<div>&nbsp;</div>						
+						<!-- <div align="center">
+							<button id="btn-browse-test-host-1" class="btn-browse" disabled="disabled">Browse...</button>
+						</div>
+						<div id="dialog-browse-test-host-1" class="dialog-browse">
+							<p><span class="ui-icon ui-icon-notice"></span>
+							Ready to select the files you want to search or download?</p>
+						</div> -->
+					</div>
+                	<div class="ibm-col-4-1" style="width: 33%" id="test-server2">
+	                	<h4>Server 2</h4>
+						<div id="jstree-div-test-host-2" class="jstree-div"></div>	 
+						<div>&nbsp;</div>						
+						<!-- <div align="center">
+							<button id="btn-browse-test-host-2" class="btn-browse" disabled="disabled">Browse...</button>
+						</div>
+						<div id="dialog-browse-test-host-2" class="dialog-browse">
+							<p><span class="ui-icon ui-icon-notice"></span>
+							Ready to select the files you want to search or download?</p>
+						</div> -->
+					</div>
+                	<div class="ibm-col-4-1" style="width: 33%" id="test-server3">
+	                	<h4>Server 3</h4>
+						<div id="jstree-div-test-host-3" class="jstree-div"></div>	 
+						<div>&nbsp;</div>						
+						<!-- <div align="center">
+							<button id="btn-browse-test-host-3" class="btn-browse" disabled="disabled">Browse...</button>
+						</div>
+						<div id="dialog-browse-test-host-3" class="dialog-browse">
+							<p><span class="ui-icon ui-icon-notice"></span>
+							Ready to select the files you want to search or download?</p>
+						</div> -->
+					</div>				
+				</div> <!-- end <div id="accordion"> -->
+			</div> <!-- <div class="ibm-col-4-1" style="width: 100%"> -->
+			<div id="dialog-invalid-selection" class="dialog">
+				<p><span class="ui-icon ui-icon-alert"></span>
+				Invalid selection made. Please select at least one log file from one host</p>
+			</div>
+			<div id="dialog-please-wait" class="dialog">
+				<p><span class="ui-icon ui-icon-info"></span>
+				Please wait...</p>
+				<p>You may close this alert - you will be notified with the download key shortly.</p>
+			</div>
+			<div id="dialog-result" class="dialog">
+				<p id="p-dialog-result-line1"><span class="ui-icon ui-icon-info"></span></p>
+				<p id="p-dialog-result-line2"></p>
+			</div>
+			<div id="dialog-help-download-timeframe" class="dialog">
+				<p><span class="ui-icon ui-icon-info"></span>
+				You can input a date range using the format "YYYYMMDD-YYYYMMDD"</p>
+				<p>For example, 20161228-20170103</p>
+			</div>
+
+			<div id="dialog-help-search-timeframe" class="dialog">
+				<p><span class="ui-icon ui-icon-info"></span>
+				You can input a date range using the format "YYYYMMDD-YYYYMMDD"</p>
+				<p>For example, 20161228-20170103</p>
+				<p><span class="ui-icon ui-icon-info"></span>
+				By default today's date is used</p>
+			</div>
+
+	</div> <!-- <div class="ibm-columns"> -->
+              
+                </div> <!--  <div id="ibm-content-main"> --> 
+			</div> <!-- <div id="ibm-content-body"> --> 
+            </div> <!-- <div id="ibm-pcon"> -->   
+          </div> <!-- <div id="ibm-content"> -->  
+          
+          
+              
+                       
+          
+            
+               
+                	
+                		
+
+                                                    			
+          
+        </main> <!--  <main role="main" aria-labelledby="ibm-pagetitle-h1"> -->
+              
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jstree/jstree.js"></script>
+	<script src="js/jstree/jstree.checkbox.js"></script>
+	<script src="js/jstree/jstree.wholerow.js"></script>	
+	<script src="js/pickmeup.min.js"></script>
+	<script src="js/webseallogstest.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>activationlogstest</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+<script src="//1.www.s81c.com/common/stats/ida_stats.js"></script>
+    <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+    <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+		<script type="text/javascript">
+		 IBMCore.common.util.config.set({
+		  "masthead":{
+		    "type":"alternate"
+		  },
+		  "footer":{
+		    "type":"alternate",
+		    "socialLinks":{
+		      "enabled":false
+		    }
+		  }
+		});   
+	 </script>
+	
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="js/jstree/themes/default/style.css" />
+
+	 <style type="text/css">
+	 
+	 	#accordion-logs-listing-webseal {
+			width: 80%;
+			padding: 10px 5px;
+			line-height: 30px;
+		}
+
+		.dialog-browse {
+			display: none;
+		}
+		
+		.dialog-download {
+			display: none;
+		}
+		
+		.ui-button {
+	 		cursor: pointer;
+			color: #3682c4;
+	 	}
+	 </style>
+</head>
+<body>
+        <main role="main" aria-labelledby="ibm-pagetitle-h1">
+          <div id="ibm-pcon">
+            <div id="ibm-content">
+              <div id="ibm-content-body">
+              
+                <div id="ibm-content-main">
+                	<div class="ibm-columns">
+                		<div class="ibm-col-4-1" style="width: 100%">
+
+                                                    			<!-- <div id="accordion-logs-webseal"> -->
+<!-- 				<h3>Production</h3>
+ -->				<div class="accordion-logs-listing-webseal" id="prod">
+					<div align="center">
+						<fieldset>
+							<button id="btn-selectall" class="btn-select-all">Select All</button>
+							<button id="btn-search" class="btn-search">Search</button>
+							<button id="btn-download" class="btn-download">Download</button>
+						</fieldset>
+					</div>				
+					<div id="dialog-download" class="dialog-download">
+						<p id="p-for-dialog-download-prod"><span class="ui-icon ui-icon-notice"></span></p>
+					</div>
+					<div id="dialog-browse" class="dialog-browse">
+						<p id="p-for-dialog-browse"><span class="ui-icon ui-icon-notice"></span></p>
+						<fieldset>
+							<input type="radio" id="btn-browse-rp" class="btn-browse">WebSEAL (RP)</button>
+							<input type="radio" id="btn-browse-isam" class="btn-browse">ISAM Mobile/AAC</button>
+							<input type="radio" id="btn-browse-fed" class="btn-browse">ISAM Federation</button>
+							<input type="radio" id="btn-browse-tfim" class="btn-browse">TFIM</button>
+						</fieldset>
+					</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+               		<div class="ibm-col-4-1" style="width: 33%">
+               		<h4 align="center">Production</h4>
+					<div align="center">
+						<button id="btn-selectall-prod" class="btn-select-all" disabled="disabled">Select All</button>
+						<button id="btn-search-prod" class="btn-search" disabled="disabled">Search</button>
+						<button id="btn-download-prod" class="btn-download" disabled="disabled">Download</button>
+					</div>
+					<div>&nbsp;</div>
+					<div align="center">
+						<button id="btn-browse-prod" class="btn-browse">Browse...</button>
+					</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>						
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+							 	 
+<!-- 							<div>&nbsp;</div>						
+							<div align="center">
+								<button id="btn-browse-prod-host1" class="btn-browse">Browse...</button>
+							</div>
+							<div id="dialog-browse-prod-host1" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div>
+ -->						
+ 						</div> <!-- end <div class="ibm-col-4-1" style="width: 25%"> -->
+                		<div class="ibm-col-4-1" style="width: 33%">
+	                		<h4 align="center">Staging</h4>
+							<div align="center">
+								<button id="btn-selectall-stag" class="btn-select-all">Select All</button>
+								<button id="btn-browse-stag" class="btn-browse">Browse...</button>
+								<button id="btn-search-stag" class="btn-search">Search</button>
+								<button id="btn-download-stag" class="btn-download">Download</button>
+							</div>
+							<div>&nbsp;</div>
+							 <div id="jstree-div-stag-1" class="demo"></div>	 
+							 <div id="jstree-div-stag-2" class="demo"></div>	 
+							 <div id="jstree-div-stag-3" class="demo"></div>	 
+ 						</div> <!-- end <div class="ibm-col-4-1" style="width: 25%"> -->
+                		<div class="ibm-col-4-1" style="width: 33%">
+	                		<h4 align="center">Test</h4>
+							<div align="center">
+								<button id="btn-selectall-test" class="btn-select-all">Select All</button>
+								<button id="btn-browse-test" class="btn-browse">Browse...</button>
+								<button id="btn-search-test" class="btn-search">Search</button>
+								<button id="btn-download-test" class="btn-download">Download</button>
+							</div>
+							<div>&nbsp;</div>
+							 <div id="jstree-div-test-1" class="demo"></div>	 	                		
+							 <div id="jstree-div-test-2" class="demo"></div>	 	                		
+							 <div id="jstree-div-test-3" class="demo"></div>	 	                		
+<!-- 							<div>&nbsp;</div>						
+							<div align="center">
+								<button id="btn-browse-prod-host3" class="btn-browse">Browse...</button>
+							</div>
+							<div id="dialog-browse-prod-host3" class="dialog-browse">
+								<p><span class="ui-icon ui-icon-notice"></span>
+								Ready to select the files you want to search or download?</p>
+							</div> -->
+ 						</div> <!-- end <div class="ibm-col-4-1" style="width: 25%"> -->
+				</div>
+
+<!-- 			</div> end <div id="accordion">
+ -->
+	</div> <!-- <div class="ibm-col-4-1"> -->
+              
+                </div>
+			</div>
+            </div>
+          </div>
+        </main>
+              
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jstree/jstree.js"></script>
+	<script src="js/jstree/jstree.checkbox.js"></script>
+	<script src="js/jstree/jstree.wholerow.js"></script>	
+	<script src="js/webseallogstest2.js"></script>
+</body>
+</html>
